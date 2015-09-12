@@ -1,0 +1,54 @@
+<?php
+session_start();
+#
+class client
+{
+	# LOGIN #
+	public function login($username, $password)
+	{
+		$content = 'action=login&username='.$username.'&password='.$password;
+		return $this->xmlclient($content);
+	}
+
+	# Connectie met XML/SSL/PHP
+	private function xmlclient($content)
+	{
+		$api['website']	= 'extreemhost.nl';
+		$api['bestand']	= '/webservice/';
+
+		# $content = 'username=value1&name2=value2';
+		$content_length = strlen($content);
+
+		# Headers van connectie
+		$headers .= 'POST '.$api['bestand'].' HTTP/1.0 Host: '.$api['website'].' Content-type: text/html Content-length: '.$content_length.' ' . PHP_EOL;
+		$headers = 'POST '.$api['bestand'].' HTTP/1.1'."\r\n". 'Host: '.$api['website']."\r\n".'Content-Type: application/x-www-form-urlencoded'."\r\n".'Content-Length: '.strlen($content)."\r\n";
+ 		#
+		if($_SESSION['session_id'] != '')
+		$headers .= 'Cookie: PHPSESSID='.$_SESSION['session_id'].'' . PHP_EOL;
+		$headers .= 'Set-Cookie: PHPSESSID="'.$_SESSION['session_id'].'' . PHP_EOL;
+		$headers .= 'Connection: Close' . "\r\n\r\n";
+	
+		$fp = fsockopen('ssl://extreemhost.nl', 443);
+		#
+		if (!$fp) return false;
+		@fputs($fp, $headers . $content);
+		$ret = '';
+		while(!feof($fp)) {
+			$ret .= fgets($fp, 1024);
+		}
+		fclose($fp);
+		$res = explode('Extreemhost 4.0 BETA', $ret); 
+		if($_SESSION['session_id'] == '') $this->findsessionid($res[0]);
+		return $res[1];
+	}
+	private function findsessionid($head)
+	{
+		# print $head .'<br />';
+		$ervoor = explode('Set-Cookie: PHPSESSID=', $head); 
+		$result = explode('; ', $ervoor[1]);
+		if($result[0] != '')
+		$_SESSION['session_id'] = $result[0];
+		# print "<br /><br />SEESSSSS<br/>" . $result[0] . 'ok';
+	}
+}
+?>
