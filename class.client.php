@@ -3,13 +3,35 @@ session_start();
 #
 class client
 {
-	# LOGIN #
+	# Register
+	public function DomainRegister($domain)
+	{
+		$sqlString = '';
+		foreach($domain as $veld => $waarde)
+		{
+			$sqlString .= "&".$veld."=".$waarde;
+		}			
+		$content='action=register&veld=domeinen'.$sqlString;
+		return $this->xmlclient($content);
+	}
+	# Cancel
+	public function Domaincancel($domain, $tld)
+	{
+		$content='action=cancel&veld=domeinen&domein='.$domain.'&tld='.$tld;
+		return $this->xmlclient($content);
+	}
+	
+	# Login
 	public function login($username, $password)
 	{
 		$content = 'action=login&username='.$username.'&password='.$password;
 		return $this->xmlclient($content);
 	}
-
+	# Secure code could be create at: https://hcp.extreemhost.nl/klantenpaneel/account/api
+	public function securecode($securecode) {
+		$content = 'action=setsecurecode&securecode='.$securecode;
+		return $this->xmlclient($content);
+	}
 	# Connectie met XML/SSL/PHP
 	private function xmlclient($content)
 	{
@@ -43,12 +65,10 @@ class client
 	}
 	private function findsessionid($head)
 	{
-		# print $head .'<br />';
 		$ervoor = explode('Set-Cookie: PHPSESSID=', $head); 
 		$result = explode('; ', $ervoor[1]);
 		if($result[0] != '')
 		$_SESSION['session_id'] = $result[0];
-		# print "<br /><br />SEESSSSS<br/>" . $result[0] . 'ok';
 	}
 }
 ?>
