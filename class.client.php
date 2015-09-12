@@ -20,7 +20,17 @@ class client
 		$content='action=cancel&veld=domeinen&domein='.$domain.'&tld='.$tld;
 		return $this->xmlclient($content);
 	}
-	
+	# Update
+	public function Domainupdate($domain)
+	{
+		$sqlString = '';
+		foreach($domain as $veld => $waarde)
+		{
+			$sqlString .= "&".$veld."=".$waarde;
+		}			
+		$content='action=update&veld=domeinen'.$sqlString;
+		return $this->xmlclient($content);
+	}
 	# Login
 	public function login($username, $password)
 	{
