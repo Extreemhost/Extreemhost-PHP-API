@@ -32,8 +32,7 @@ class client
 		return $this->xmlclient($content);
 	}
 	# Login
-	public function login($username, $password)
-	{
+	public function login($username, $password) {
 		$content = 'action=login&username='.$username.'&password='.$password;
 		return $this->xmlclient($content);
 	}
@@ -42,19 +41,15 @@ class client
 		$content = 'action=setsecurecode&securecode='.$securecode;
 		return $this->xmlclient($content);
 	}
-	# Connectie met XML/SSL/PHP
-	private function xmlclient($content)
-	{
+	# Connection with PHP/XML/SSL
+	private function xmlclient($content) {
 		$api['website']	= 'extreemhost.nl';
 		$api['bestand']	= '/webservice/';
-
-		# $content = 'username=value1&name2=value2';
 		$content_length = strlen($content);
-
-		# Headers van connectie
+		# Connection with headers
 		$headers .= 'POST '.$api['bestand'].' HTTP/1.0 Host: '.$api['website'].' Content-type: text/html Content-length: '.$content_length.' ' . PHP_EOL;
 		$headers = 'POST '.$api['bestand'].' HTTP/1.1'."\r\n". 'Host: '.$api['website']."\r\n".'Content-Type: application/x-www-form-urlencoded'."\r\n".'Content-Length: '.strlen($content)."\r\n";
- 		#
+		# Session ID may not be emtpy
 		if($_SESSION['session_id'] != '')
 		$headers .= 'Cookie: PHPSESSID='.$_SESSION['session_id'].'' . PHP_EOL;
 		$headers .= 'Set-Cookie: PHPSESSID="'.$_SESSION['session_id'].'' . PHP_EOL;
