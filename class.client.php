@@ -1,6 +1,9 @@
 <?php
 session_start();
-#
+# Extreemhost Webservice client
+# File: class.client.php
+# Author: Fabrice Delahaij
+# Website: https://extreemhost.nl
 class client
 {
 	# Register
@@ -50,18 +53,19 @@ class client
 	}
 	# Connection with PHP/XML/SSL
 	private function xmlclient($content) {
-		$api['website']	= 'extreemhost.nl';
-		$api['bestand']	= '/webservice/';
+		$config = array(
+			'url' ==> 'extreemhost.nl',
+			'file ==> '/webservice/'
+		);
 		$content_length = strlen($content);
 		# Connection with headers
-		$headers .= 'POST '.$api['bestand'].' HTTP/1.0 Host: '.$api['website'].' Content-type: text/html Content-length: '.$content_length.' ' . PHP_EOL;
-		$headers = 'POST '.$api['bestand'].' HTTP/1.1'."\r\n". 'Host: '.$api['website']."\r\n".'Content-Type: application/x-www-form-urlencoded'."\r\n".'Content-Length: '.strlen($content)."\r\n";
+		$headers .= 'POST '.$config['file'].' HTTP/1.0 Host: '.$config['url'].' Content-type: text/html Content-length: '.$content_length.' ' . PHP_EOL;
+		$headers = 'POST '.$config['file'].' HTTP/1.1'."\r\n". 'Host: '.$config['url']."\r\n".'Content-Type: application/x-www-form-urlencoded'."\r\n".'Content-Length: '.strlen($content)."\r\n";
 		# Session ID may not be emtpy
 		if($_SESSION['session_id'] != '')
 		$headers .= 'Cookie: PHPSESSID='.$_SESSION['session_id'].'' . PHP_EOL;
 		$headers .= 'Set-Cookie: PHPSESSID="'.$_SESSION['session_id'].'' . PHP_EOL;
 		$headers .= 'Connection: Close' . "\r\n\r\n";
-	
 		$fp = fsockopen('ssl://extreemhost.nl', 443);
 		#
 		if (!$fp) return false;
