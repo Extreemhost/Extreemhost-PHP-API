@@ -1,6 +1,6 @@
 # PHP-WEBAPI
-PHP API 4.0 BETA from Extreemhost
-Website: https://extreemhost.nl
+PHP API 4.0 BETA from Extreemhost<br />
+Website: https://extreemhost.nl<br />
 Email: support@extreemhost.nl
 
 # UPDATE
