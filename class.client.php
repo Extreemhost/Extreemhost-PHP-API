@@ -4,8 +4,7 @@ session_start();
 class client
 {
 	# Register
-	public function DomainRegister($domain)
-	{
+	public function DomainRegister($domain)	{
 		$sqlString = '';
 		foreach($domain as $veld => $waarde)
 		{
@@ -15,20 +14,28 @@ class client
 		return $this->xmlclient($content);
 	}
 	# Cancel
-	public function Domaincancel($domain, $tld)
-	{
+	public function Domaincancel($domain, $tld) {
 		$content='action=cancel&veld=domeinen&domein='.$domain.'&tld='.$tld;
 		return $this->xmlclient($content);
 	}
 	# Update
-	public function Domainupdate($domain)
-	{
+	public function Domainupdate($domain) {
 		$sqlString = '';
 		foreach($domain as $veld => $waarde)
 		{
 			$sqlString .= "&".$veld."=".$waarde;
 		}			
 		$content='action=update&veld=domeinen'.$sqlString;
+		return $this->xmlclient($content);
+	}
+	# Getting auth code for domain
+	public function getAuthCode($domain, $tld) {
+		$content='action=getAuthCode&domein='.$domain.'&tld='.$tld;
+		return $this->xmlclient($content);
+	}
+	# Setting nameservers for domain
+	public function setNameservers($ns1, $ns2, $ns3, $ns1_ipv4, $ns2_ipv4 ,$ns3_ipv4, $ns1_ipv6, $ns2_ipv6, $ns3_ipv6) {
+		$content='action=setNameservers&ns1='.$ns1.'&ns2='.$ns2.'&ns3='.$ns3.'&ns1_ipv4='.$ns1_ipv4.'&ns2_ipv4='.$ns2_ipv4.'&ns3_ipv4='.$ns3_ipv4.'&ns1_ipv6='.$ns1_ipv6.'&ns2_ipv6='.$ns2_ipv6.'&ns3_ipv6='.$ns3_ipv6;
 		return $this->xmlclient($content);
 	}
 	# Login
@@ -68,8 +75,7 @@ class client
 		if($_SESSION['session_id'] == '') $this->findsessionid($res[0]);
 		return $res[1];
 	}
-	private function findsessionid($head)
-	{
+	private function findsessionid($head) {
 		$ervoor = explode('Set-Cookie: PHPSESSID=', $head); 
 		$result = explode('; ', $ervoor[1]);
 		if($result[0] != '')
