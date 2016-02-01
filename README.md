@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 # Extreemhost API client for PHP
 PHP API Client for [Extreemhost](https://extreemhos.nl)
-=======
-# PHP-WEBAPI
-PHP API 4.0 BETA for Extreemhost<br />
-Website: https://extreemhost.nl<br />
-Email: support@extreemhost.nl
->>>>>>> origin/master
 
 ## Requirements ##
 To use the Extreemhost API client, the following things are required:
 
-+ PHP 52
++ Viste Extreemhost website for register free [account](https://extreemhost.nl).
++ PHP >=5.2
 
 ## Getting started ##
 ## API documentation ##
