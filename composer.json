@@ -1,7 +1,7 @@
 {
     "name": "extreemhost/class.client.php",
     "description": "Extreemhost API client library for PHP",
-    "homepage": "https://github.com/Extreemhost/PHP-WEBAPI",
+    "homepage": "https://github.com/Extreemhost/Extreemhost-PHP-API",
     "license": "BSD-2-Clause",
     "authors": [
         {
