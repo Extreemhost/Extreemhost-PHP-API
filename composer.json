@@ -1,5 +1,6 @@
 {
     "name": "extreemhost/class.client.php",
+    "version": "1.0.0",
     "description": "Extreemhost API client library for PHP",
     "homepage": "https://github.com/Extreemhost/Extreemhost-PHP-API",
     "license": "BSD-2-Clause",
