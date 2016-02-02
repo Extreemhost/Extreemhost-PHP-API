@@ -18,4 +18,4 @@ If you wish to learn more about our API, please visit the [Extreemhost API Docum
 [BSD (Berkeley Software Distribution) License](https://opensource.org/licenses/bsd-license.php). Copyright (c) 2016, Extreemhost.
 
 ## Support ##
-Contact: [www.extreemhost.nl](https://extreemhost.nl) — info@extreemhost.nl — +31 316-23 40 40
+Contact: [www.extreemhost.nl](https://extreemhost.nl) — info@extreemhost.nl — +31 316-23 40 40.
