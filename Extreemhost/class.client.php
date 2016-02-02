@@ -55,7 +55,7 @@ class client
 	private function xmlclient($content) {
 		$config = array(
 			'url' ==> 'extreemhost.nl',
-			'file ==> '/webservice/'
+			'file' ==> '/webservice/'
 		);
 		$content_length = strlen($content);
 		# Connection with headers
