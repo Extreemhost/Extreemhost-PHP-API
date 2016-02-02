@@ -1,17 +1,20 @@
 <?php
-session_start();
 # Extreemhost Webservice client
 # File: class.client.php
 # Author: Fabrice Delahaij
 # Website: https://extreemhost.nl
+
+# Session
+session_start();
+
 class client
 {
 	# Register
 	public function DomainRegister($domain)	{
 		$sqlString = '';
-		foreach($domain as $veld => $waarde)
+		foreach($domain as $field => $value)
 		{
-			$sqlString .= "&".$veld."=".$waarde;
+			$sqlString .= "&".$field."=".$value;
 		}			
 		$content='action=register&veld=domeinen'.$sqlString;
 		return $this->xmlclient($content);
@@ -24,9 +27,9 @@ class client
 	# Update
 	public function Domainupdate($domain) {
 		$sqlString = '';
-		foreach($domain as $veld => $waarde)
+		foreach($domain as $field => $value)
 		{
-			$sqlString .= "&".$veld."=".$waarde;
+			$sqlString .= "&".$field."=".$value;
 		}			
 		$content='action=update&veld=domeinen'.$sqlString;
 		return $this->xmlclient($content);
@@ -47,7 +50,7 @@ class client
 		return $this->xmlclient($content);
 	}
 	# Secure code could be create at: https://hcp.extreemhost.nl/klantenpaneel/account/api
-	public function securecode($securecode) {
+	public function securecode($token) {
 		$content = 'action=setsecurecode&securecode='.$securecode;
 		return $this->xmlclient($content);
 	}
