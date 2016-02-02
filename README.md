@@ -2,6 +2,7 @@
 PHP API Client for [Extreemhost](https://extreemhos.nl)
 
 [![Floobits Status](https://floobits.com/Extreemhost/Extreemhost-PHP-API.svg)](https://floobits.com/Extreemhost/Extreemhost-PHP-API/redirect)
+[![Gitter](https://badges.gitter.im/Extreemhost/Extreemhost-PHP-API.svg)](https://gitter.im/Extreemhost/Extreemhost-PHP-API?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## Requirements ##
 To use the Extreemhost API client, the following things are required:
