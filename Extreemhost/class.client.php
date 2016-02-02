@@ -50,7 +50,7 @@ class client
 		return $this->xmlclient($content);
 	}
 	# Secure code could be create at: https://hcp.extreemhost.nl/klantenpaneel/account/api
-	public function securecode($token) {
+	public function securecode($securecode) {
 		$content = 'action=setsecurecode&securecode='.$securecode;
 		return $this->xmlclient($content);
 	}
