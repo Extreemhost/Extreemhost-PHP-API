@@ -69,7 +69,7 @@ class client
 		$fp = fsockopen('ssl://extreemhost.nl', 443);
 		#
 		if (!$fp) return false;
-		@fputs($fp, $headers . $content);
+		fputs($fp, $headers . $content);
 		$ret = '';
 		while(!feof($fp)) {
 			$ret .= fgets($fp, 1024);
