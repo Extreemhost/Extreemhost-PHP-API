@@ -7,10 +7,10 @@
 # Session
 session_start();
 
-class client
+class Client
 {
 	# Register
-	public function DomainRegister($domain)	{
+	public function DomainRegister($domain){
 		$sqlString = '';
 		foreach($domain as $field => $value)
 		{
@@ -49,11 +49,7 @@ class client
 		$content = 'action=login&username='.$username.'&password='.$password;
 		return $this->xmlclient($content);
 	}
-	# Secure code could be create at: https://hcp.extreemhost.nl/klantenpaneel/account/api
-	public function securecode($securecode) {
-		$content = 'action=setsecurecode&securecode='.$securecode;
-		return $this->xmlclient($content);
-	}
+
 	# Connection with PHP/XML/SSL
 	private function xmlclient($content) {
 		$config = array(
