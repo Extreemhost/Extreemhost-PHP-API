@@ -1,4 +1,4 @@
-# Extreemhost API client for PHP
+﻿# Extreemhost API client for PHP
 PHP API Client for [Extreemhost](https://extreemhos.nl)
 
 [![Floobits Status](https://floobits.com/Extreemhost/Extreemhost-PHP-API.svg)](https://floobits.com/Extreemhost/Extreemhost-PHP-API/redirect)
@@ -11,6 +11,16 @@ To use the Extreemhost API client, the following things are required:
 + PHP >=5.2
 
 ## Getting started ##
+```php
+require_once('class.client.php');
+
+$client = new client;
+
+$client->login('Email', 'Password');
+
+
+```
+
 ## API documentation ##
 If you wish to learn more about our API, please visit the [Extreemhost API Documentation](https://extreemhost.nl/api/).
 
