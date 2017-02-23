@@ -15,8 +15,7 @@ To use the Extreemhost API client, the following things are required:
 require_once('class.client.php');
 
 $client = new client;
-
-$client->login('Email', 'Password');
+$client->Authentication('Email', 'AuthCode');
 
 
 ```
