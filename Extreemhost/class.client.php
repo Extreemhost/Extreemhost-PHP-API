@@ -7,7 +7,6 @@
 	*/
 
 	session_start();
-
 	class client
 	{
 		public function Domeinregister($domein) {
@@ -33,13 +32,11 @@
 			$content='action=cancel&veld=domeinen&domein='.$domein.'&tld='.$tld;
 			return $this->xmlclient($content);
 		}
-
 	
 		public function servercancel($id) {
 			$content='action=cancel&veld=servers&id='.$id;
 			return $this->xmlclient($content);
 		}
-
 
 		public function Domeinupdate($domein) {
 			$sqlString = '';
@@ -50,13 +47,12 @@
 			return $this->xmlclient($content);
 		}
 
-		public function Serverupdate($domein)
-		{
+		public function Serverupdate($domein) {
 			if($domein['id'] == '') return "Server id mag niet leeg zijn!";
 	
 			$sqlString = '';
-				foreach($id as $veld => $waarde){
-					$sqlString .= "&$veld=$waarde";
+			foreach($id as $veld => $waarde){
+				$sqlString .= "&$veld=$waarde";
 			}			
 			$content='action=update&veld=servers'.$sqlString;
 			return $this->xmlclient($content);
@@ -72,19 +68,14 @@
 			$content='action=getDomainName&domein='.$domein.'&tld='.$tld;
 			return $this->xmlclient($content);
 		}
-		public function getAuthCode($domein, $tld)
-		{
+
+		public function getAuthCode($domein, $tld) {
 			$content='action=getAuthCode&domein='.$domein.'&tld='.$tld;
 			return $this->xmlclient($content);
 		}
 
 		public function getAllTldInfos() {
 			$content='action=getAllTldInfos';
-			return $this->xmlclient($content);
-		}
-
-		public function getIrcNames() {
-			$content='action=getIrcNames';
 			return $this->xmlclient($content);
 		}
 
@@ -103,10 +94,6 @@
 			return $this->xmlclient($content);
 		}
 
-		public function getIP() {
-			$content='action=GetIP';
-			return $this->xmlclient($content);
-		}
 		public function checkAvailability($domain, $tld) {
 			$content='action=checkAvailability&domain='.$domain.'&tld='.$tld;
 			return $this->xmlclient($content);
@@ -118,6 +105,11 @@
 
 		public function ResendValidationEmail($email) {
 			$content = 'action=ResendValidationEmail&email='.$email;
+			return $this->xmlclient($content);
+		}
+
+		public function getIP() {
+			$content='action=GetIP';
 			return $this->xmlclient($content);
 		}
 
